@@ -105,6 +105,14 @@ const initApiRoutes = (app) => {
   //email router
   router.post("/sendEmail", sendEmailController);
 
+  // booking
+  router.get("/bookings", reservationController.getListBooking);
+  router.get("/bookings/:bookingId", reservationController.getDetailBooking);
+  router.put(
+    "/bookings/:bookingId/updateStatus",
+    reservationController.updateStatus
+  );
+
   return app.use("/api/v1/", router);
 };
 
