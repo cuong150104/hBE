@@ -12,6 +12,7 @@ import roomController from "../controller/controllerClient/roomController";
 import reservation_detailController from "../controller/controllerClient/reservation_detailController";
 import { sendEmailController } from "../controller/emailController.js";
 import roomAdminController from "../controller/roomController";
+import statisticController from "../controller/statisticsController";
 
 const router = express.Router();
 
@@ -111,6 +112,13 @@ const initApiRoutes = (app) => {
   router.put(
     "/bookings/:bookingId/updateStatus",
     reservationController.updateStatus
+  );
+
+  // statistic
+  router.get("/statistics", statisticController.getStatistics);
+  router.get(
+    "/statistics/top-booking-rooms",
+    statisticController.getTopBookingRooms
   );
 
   return app.use("/api/v1/", router);
